@@ -32,7 +32,7 @@ if choose == 'Dataset':
 
     if hasattr(data, 'data') and hasattr(data, 'target'):
         df = pd.DataFrame(data.data, columns=data.feature_names)
-        target = data.target
+        target = df.target
         df['target'] = target
         st.dataframe(df)
 
