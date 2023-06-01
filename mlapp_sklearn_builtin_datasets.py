@@ -40,9 +40,17 @@ if choose == 'Dataset':
     st.write('Upload your Dataset')
     upload = st.file_uploader('Upload here')
     if upload:
-        data = pd.read_csv(upload,index_col=None)
+        data = pd.read_csv(upload, index_col=None)
         data.to_csv("sourcev.csv", index=None)
         st.dataframe(data)
+        st.success('Dataset uploaded successfully!')
+    else:
+        if os.path.exists("sourcev.csv"):
+            data = pd.read_csv("sourcev.csv", index_col=None)
+            st.dataframe(data)
+        else:
+            st.warning('No dataset available. Please upload a dataset.')
+
         
 if choose == 'EDA':
     if st.button('Perform EDA'):
