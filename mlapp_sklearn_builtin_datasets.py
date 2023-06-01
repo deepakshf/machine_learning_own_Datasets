@@ -37,10 +37,13 @@ if choose == 'Dataset':
         st.dataframe(df)
 
 if choose == 'EDA':
-    if st.button('Perform EDA'):
-        st.header("Perform profiling on the dataset")
-        profile_report = df.profile_report()
-        st_profile_report(profile_report)
+    if 'df' in locals():
+        if st.button('Perform EDA'):
+            st.header("Perform profiling on the dataset")
+            profile_report = df.profile_report()
+            st_profile_report(profile_report)
+    else:
+        st.warning('Please select a dataset first.')
 
 if choose == 'Training':
     st.header('Start Training your model now.')
