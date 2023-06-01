@@ -16,17 +16,22 @@ ml_logo = "pycaret.png"
 st.image(ml_logo, width=500)
 st.title('Auto ML Library')
 
+if os.path.exists("sourcev.csv"):
+    data = pd.read_csv('sourcev.csv',index_col=None)
+
 with st.sidebar:
     st.title('Welcome to ML App')
     ml_logo = "ml.png"
     st.image(ml_logo, width=200)
-    st.write('This application provides functionalities to work with built-in datasets from scikit-learn, perform EDA, train machine learning models using Pycaret, and download the trained models.')
+    st.write('This application provides functionalities to upload datasets, perform EDA, train machine learning models using Pycaret, and download the trained models.')
     st.write('Choose your parameters.')
     choose = st.radio('Choose your options',['Dataset', 'EDA','Training','Download'])
-
+    
+    
+    
 if choose == 'Dataset':
     st.write('Select a built-in dataset')
-    dataset_list = datasets.__all__
+    dataset_list = ['iris', 'boston', 'diabetes', 'wine', 'breast_cancer']  # Add more datasets as needed
     dataset_name = st.selectbox('Select dataset', dataset_list)
     data = getattr(datasets, dataset_name)()
 
@@ -34,24 +39,21 @@ if choose == 'Dataset':
         df = pd.DataFrame(data.data, columns=data.feature_names)
         target = data.target
         df['target'] = target
-        df = pd.read_csv(df,index_col=None)
-        df.to_csv("sourcev.csv", index=None)
         st.dataframe(df)
+        
+        # Save the dataset to CSV file
+        df.to_csv("sourcev.csv", index=None)
 
 if choose == 'EDA':
-    if 'df' in locals():
-        if st.button('Perform EDA'):
-            st.header("Perform profiling on the dataset")
-            profile_report = df.profile_report()
-            st_profile_report(profile_report)
-    else:
-        st.warning('Please select a dataset first.')
-
+    if st.button('Perform EDA'):
+        st.header("Perform profiling on the Dataset")
+        profile_report = df.profile_report()
+        st_profile_report(profile_report)
+    
 if choose == 'Training':
     st.header('Start Training your model now.')
     choice = st.sidebar.selectbox("Select your Technique", ["Regression","Classification"])
     target = st.selectbox('Select your Target Variable', df.columns)
-
     if choice == 'Classification':
         if st.sidebar.button('Train'):
             s1 = ClassificationExperiment()
@@ -59,15 +61,14 @@ if choose == 'Training':
             setup_data = s1.pull()
             st.info('The setup data is as follows:-')
             st.table(setup_data)
-
+            
             best_model1 = s1.compare_models()
             compare_model = s1.pull()
             st.info("The comparison of models is as follows:")
             st.table(compare_model)
-
+            
             best_model1
             s1.save_model(best_model1,"Machine learning Model")
-
     if choice == 'Regression':
         if st.sidebar.button('Train'):
             s2 = RegressionExperiment()
@@ -75,16 +76,16 @@ if choose == 'Training':
             setup_data = s2.pull()
             st.info('The setup data is as follows:-')
             st.table(setup_data)
-
+            
             best_model2 = s2.compare_models()
             compare_model = s2.pull()
             st.info("The comparison of models is as follows:")
             st.table(compare_model)
-
+            
             best_model2
             s2.save_model(best_model2,"Machine learning Model")
 
-if choose == "Download":
+if choose =="Download":
     with open("Machine Learning model.pkl",'rb') as f:
         st.caption("Download your model from here:")
         st.download_button("Download the file",f,"Machine Learning model.pkl")
