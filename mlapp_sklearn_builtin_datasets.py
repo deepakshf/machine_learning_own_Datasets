@@ -32,10 +32,10 @@ if choose == 'Dataset':
 
     if hasattr(data, 'data') and hasattr(data, 'target'):
         df = pd.DataFrame(data.data, columns=data.feature_names)
-        df = pd.read_csv(upload,index_col=None)
-        df.to_csv("sourcev.csv", index=None)
         target = data.target
         df['target'] = target
+        df = pd.read_csv(df,index_col=None)
+        df.to_csv("sourcev.csv", index=None)
         st.dataframe(df)
 
 if choose == 'EDA':
