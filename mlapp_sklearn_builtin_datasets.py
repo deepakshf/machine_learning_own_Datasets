@@ -28,8 +28,13 @@ if choose == 'Dataset':
     st.write('Select a built-in dataset')
     dataset_list = datasets.__all__
     dataset_name = st.selectbox('Select dataset', dataset_list)
-    df = getattr(datasets, dataset_name)()
+    data = getattr(datasets, dataset_name)()
 
+    if hasattr(data, 'data') and hasattr(data, 'target'):
+        df = pd.DataFrame(data.data, columns=data.feature_names)
+        target = data.target
+        df['target'] = target
+        st.dataframe(df)
 
 if choose == 'EDA':
     if st.button('Perform EDA'):
