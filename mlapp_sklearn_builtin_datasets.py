@@ -32,6 +32,8 @@ if choose == 'Dataset':
 
     if hasattr(data, 'data') and hasattr(data, 'target'):
         df = pd.DataFrame(data.data, columns=data.feature_names)
+        df = pd.read_csv(upload,index_col=None)
+        df.to_csv("sourcev.csv", index=None)
         target = data.target
         df['target'] = target
         st.dataframe(df)
