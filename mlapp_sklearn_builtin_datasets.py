@@ -27,11 +27,9 @@ with st.sidebar:
     st.write('Choose your parameters.')
     choose = st.radio('Choose your options',['Dataset', 'EDA','Training','Download'])
     
-    
-    
 if choose == 'Dataset':
     st.write('Select a built-in dataset')
-    dataset_list = ['iris', 'boston', 'diabetes', 'wine', 'breast_cancer']  # Add more datasets as needed
+    dataset_list = ['iris', 'boston', 'diabetes', 'wine', 'breast_cancer']  # Valid scikit-learn dataset names
     dataset_name = st.selectbox('Select dataset', dataset_list)
     data = getattr(datasets, dataset_name)()
 
@@ -45,30 +43,35 @@ if choose == 'Dataset':
         df.to_csv("sourcev.csv", index=None)
 
 if choose == 'EDA':
-    if st.button('Perform EDA'):
-        st.header("Perform profiling on the Dataset")
-        profile_report = df.profile_report()
-        st_profile_report(profile_report)
+    if 'df' in locals():
+        if st.button('Perform EDA'):
+            st.header("Perform profiling on the Dataset")
+            profile_report = df.profile_report()
+            st_profile_report(profile_report)
+    else:
+        st.warning('Please select a dataset first.')
     
 if choose == 'Training':
-    st.header('Start Training your model now.')
-    choice = st.sidebar.selectbox("Select your Technique", ["Regression","Classification"])
-    target = st.selectbox('Select your Target Variable', df.columns)
-    if choice == 'Classification':
-        if st.sidebar.button('Train'):
-            s1 = ClassificationExperiment()
-            s1.setup(data=df, target=target)
-            setup_data = s1.pull()
-            st.info('The setup data is as follows:-')
-            st.table(setup_data)
-            
-            best_model1 = s1.compare_models()
-            compare_model = s1.pull()
-            st.info("The comparison of models is as follows:")
-            st.table(compare_model)
-            
-            best_model1
-            s1.save_model(best_model1,"Machine learning Model")
+    if 'df' in locals():
+        st.header('Start Training your model now.')
+        choice = st.sidebar.selectbox("Select your Technique", ["Regression","Classification"])
+        target = st.selectbox('Select your Target Variable', df.columns)
+        if choice == 'Classification':
+            if st.sidebar.button('Train'):
+                s1 = ClassificationExperiment()
+                s1.setup(data=df, target=target)
+                setup_data = s1.pull()
+                st.info('The setup data is as follows:-')
+                st.table(setup_data)
+
+                best_model1 = s1.compare_models()
+                compare_model = s1.pull()
+                st.info("The comparison of models is as follows:")
+                st.table(compare_model)
+
+                best_model1
+                s1.save_model(best_model1,"Machine learning Model")
+
     if choice == 'Regression':
         if st.sidebar.button('Train'):
             s2 = RegressionExperiment()
