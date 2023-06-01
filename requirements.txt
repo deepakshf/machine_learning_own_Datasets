@@ -1,0 +1,8 @@
+numpy
+scikit-learn
+pandas
+streamlit
+matplotlib
+pycaret
+pandas_profiling
+streamlit_pandas_profiling
