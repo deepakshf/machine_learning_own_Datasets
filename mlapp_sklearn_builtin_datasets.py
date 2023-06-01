@@ -30,10 +30,16 @@ if choose == 'Dataset':
     dataset_name = st.selectbox('Select dataset', dataset_list)
     data = getattr(datasets, dataset_name)()
 
+    if hasattr(data, 'data') and hasattr(data, 'target'):
+        df = pd.DataFrame(data.data, columns=data.feature_names)
+        target = data.target
+        df['target'] = target
+        st.dataframe(df)
+
 if choose == 'EDA':
     if st.button('Perform EDA'):
         st.header("Perform profiling on the dataset")
-        profile_report = data.profile_report()
+        profile_report = df.profile_report()
         st_profile_report(profile_report)
 
 if choose == 'Training':
