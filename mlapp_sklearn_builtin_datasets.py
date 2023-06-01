@@ -37,19 +37,17 @@ with st.sidebar:
     
     
 if choose == 'Dataset':
-    st.write('Upload your Dataset')
-    upload = st.file_uploader('Upload here')
-    if upload:
-        data = pd.read_csv(upload, index_col=None)
-        data.to_csv("sourcev.csv", index=None)
+    st.write('Choose your Dataset')
+    available_datasets = [filename for filename in os.listdir() if filename.endswith('.csv')]
+    selected_dataset = st.selectbox('Select Dataset', available_datasets)
+    
+    if selected_dataset:
+        data = pd.read_csv(selected_dataset, index_col=None)
         st.dataframe(data)
-        st.success('Dataset uploaded successfully!')
+        st.success('Dataset loaded successfully!')
     else:
-        if os.path.exists("sourcev.csv"):
-            data = pd.read_csv("sourcev.csv", index_col=None)
-            st.dataframe(data)
-        else:
-            st.warning('No dataset available. Please upload a dataset.')
+        st.warning('No dataset available. Please upload a dataset.')
+
 
         
 if choose == 'EDA':
