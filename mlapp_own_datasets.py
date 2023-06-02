@@ -59,18 +59,18 @@ with st.sidebar:
 if choose == 'Dataset':
     dataset_name = st.sidebar.selectbox("Select Your Desired Dataset:",("Iris Dataset", "Breast Cancer Dataset", "Wine Dataset","Diabetes Dataset","Digits Dataset","Boston Housing Dataset"))
     def get_dataset(dataset_name):
-    if dataset_name == "Iris Dataset":
-        data = datasets.load_iris()
-    elif dataset_name == "Breast Cancer Dataset":
-        data = datasets.load_breast_cancer()
-    elif dataset_name == "Wine Dataset":
-        data = datasets.load_wine()
-    elif dataset_name == "Boston Housing Dataset":
-        data = datasets.load_boston()
-    elif dataset_name == "Diabetes Dataset":
-        data = datasets.load_diabetes()
-    else:
-        data = datasets.load_digits()
+        if dataset_name == "Iris Dataset":
+            data = datasets.load_iris()
+        elif dataset_name == "Breast Cancer Dataset":
+            data = datasets.load_breast_cancer()
+        elif dataset_name == "Wine Dataset":
+            data = datasets.load_wine()
+        elif dataset_name == "Boston Housing Dataset":
+            data = datasets.load_boston()
+        elif dataset_name == "Diabetes Dataset":
+            data = datasets.load_diabetes()
+        else:
+            data = datasets.load_digits()
         
     data = pd.read_csv(upload,index_col=None)
     data.to_csv("sourcev.csv", index=None)
