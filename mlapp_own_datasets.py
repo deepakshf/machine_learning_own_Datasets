@@ -71,10 +71,7 @@ if choose == 'Dataset':
             datan = datasets.load_diabetes()
         else:
             datan = datasets.load_digits()
-        X = datan.data
-        y = datan.target
-        return X, y
-    X, y  = get_dataset(dataset_name)
+        return datan
     X = pd.DataFrame(datan.data)
     y = pd.DataFrame(datan.target)
     data = pd.concat([X, y], axis =1)
