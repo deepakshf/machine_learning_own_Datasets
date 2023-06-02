@@ -72,8 +72,9 @@ if choose == 'Dataset':
         else:
             datan = datasets.load_digits()
         return datan
-    X = pd.DataFrame(datan.data)
-    y = pd.DataFrame(datan.target)
+    datal = get_dataset(dataset_name)
+    X = pd.DataFrame(datal.data)
+    y = pd.DataFrame(datal.target)
     data = pd.concat([X, y], axis =1)
     data.to_csv("sourcev.csv", index=None)
     st.dataframe(data)
