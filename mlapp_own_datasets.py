@@ -37,8 +37,7 @@ if choose == 'Dataset':
         df = pd.DataFrame(data.data, columns=data.feature_names)
         target = data.target
         df['target'] = target
-        df.to_csv("sourcev.csv", index=None)
-    st.dataframe(df)
+        st.dataframe(df)
 
 if choose == 'EDA':
     if st.button('Perform EDA'):
