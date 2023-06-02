@@ -10,7 +10,7 @@ page_bg_img = f"""
 [data-testid = "stSidebar"]{{
     background-image: url("https://media.istockphoto.com/id/1295703395/photo/abstract-yellow-and-black-are-light-pattern-with-the-gradient-is-the-with-floor-wall-metal.jpg?b=1&s=612x612&w=0&k=20&c=pdvE7aC-XSq34THbFvk-Zx6LxDUjebjUU7CQTohXjRY=");
     background-size: cover;
-    opacity: 1;
+    opacity: 10;
     filter: blur(0.2px);
     }}
 
