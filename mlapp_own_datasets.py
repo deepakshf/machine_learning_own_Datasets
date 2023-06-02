@@ -34,22 +34,22 @@ if choose == 'Dataset':
     data = getattr(datasets, dataset_name)()
 
     if hasattr(data, 'data') and hasattr(data, 'target'):
-        data = pd.DataFrame(data.data, columns=data.feature_names)
-        target = data.target
-        data['target'] = target
-        st.dataframe(data)
-        data.to_csv("sourcev.csv")
+        df = pd.DataFrame(data.data, columns=data.feature_names)
+        target = df.target
+        df['target'] = target
+        st.dataframe(df)
+        df.to_csv("sourcev.csv")
 
 if choose == 'EDA':
     if st.button('Perform EDA'):
         st.header("Perform profiling on the dataset")
-        profile_report = data.profile_report()
+        profile_report = df.profile_report()
         st_profile_report(profile_report)
 
 if choose == 'Training':
     st.header('Start Training your model now.')
     choice = st.sidebar.selectbox("Select your Technique", ["Regression","Classification"])
-    target = st.selectbox('Select your Target Variable', data.columns)
+    target = st.selectbox('Select your Target Variable', df.columns)
 
     if choice == 'Classification':
         if st.sidebar.button('Train'):
@@ -70,7 +70,7 @@ if choose == 'Training':
     if choice == 'Regression':
         if st.sidebar.button('Train'):
             s2 = RegressionExperiment()
-            s2.setup(data=data, target=target)
+            s2.setup(data=df, target=target)
             setup_data = s2.pull()
             st.info('The setup data is as follows:-')
             st.table(setup_data)
