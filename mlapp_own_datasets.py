@@ -35,8 +35,6 @@ if choose == 'Dataset':
 
     if hasattr(data, 'data') and hasattr(data, 'target'):
         df = pd.DataFrame(data.data, columns=data.feature_names)
-        target = data.target
-        df['target'] = target
         df.to_csv("sourcev.csv", index=None)
         st.dataframe(df)
 
