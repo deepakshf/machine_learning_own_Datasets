@@ -38,6 +38,7 @@ if choose == 'Dataset':
         target = data.target
         df['target'] = target
         st.dataframe(df)
+        df.to_csv("sourcev.csv")
 
 if choose == 'EDA':
     if st.button('Perform EDA'):
