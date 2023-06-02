@@ -16,6 +16,9 @@ ml_logo = "pycaret.png"
 st.image(ml_logo, width=500)
 st.title('Auto ML Library')
 
+if os.path.exists("sourcev.csv"):
+    data = pd.read_csv('sourcev.csv',index_col=None)
+
 with st.sidebar:
     st.title('Welcome to ML App')
     ml_logo = "ml.png"
@@ -34,6 +37,7 @@ if choose == 'Dataset':
         df = pd.DataFrame(data.data, columns=data.feature_names)
         target = data.target
         df['target'] = target
+        df.to_csv("sourcev.csv", index=None)
         st.dataframe(df)
 
 if choose == 'EDA':
