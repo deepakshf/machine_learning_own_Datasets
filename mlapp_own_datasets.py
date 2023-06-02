@@ -8,7 +8,7 @@ page_bg_img = f"""
     opacity: 0.9;
     }}
 [data-testid = "stSidebar"]{{
-    background-image: url("https://e0.pxfuel.com/wallpapers/618/388/desktop-wallpaper-white-technology-white-network.jpg");
+    background-image: url("https://media.istockphoto.com/id/1295703395/photo/abstract-yellow-and-black-are-light-pattern-with-the-gradient-is-the-with-floor-wall-metal.jpg?b=1&s=612x612&w=0&k=20&c=pdvE7aC-XSq34THbFvk-Zx6LxDUjebjUU7CQTohXjRY=");
     background-size: cover;
     opacity: 0.8;
     filter: blur(0.2px);
