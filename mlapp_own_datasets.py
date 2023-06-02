@@ -3,14 +3,14 @@ import streamlit as st
 page_bg_img = f"""
 <style>
 [data-testid = "stAppViewContainer"]{{
-    background-image: url("https://wallpaperaccess.com/full/4798873.png");
+    background-image: url("https://img.freepik.com/free-vector/abstract-background_53876-43364.jpg?w=1060&t=st=1685685448~exp=1685686048~hmac=bf06f2136962f77d8fb9a95948390114a68a61622da7713a357e1e359c89618c");
     background-size: cover;
     opacity: 0.9;
     }}
 [data-testid = "stSidebar"]{{
-    background-image: url("https://media.istockphoto.com/id/1295703395/photo/abstract-yellow-and-black-are-light-pattern-with-the-gradient-is-the-with-floor-wall-metal.jpg?b=1&s=612x612&w=0&k=20&c=pdvE7aC-XSq34THbFvk-Zx6LxDUjebjUU7CQTohXjRY=");
+    background-image: url("https://img.freepik.com/free-vector/multicolor-abstract-background_1123-53.jpg?w=740&t=st=1685685659~exp=1685686259~hmac=d3e48585afea7ba2d11c59452ad8edb5c216e26638437d1de8bbe0dec0188f72");
     background-size: cover;
-    opacity: 10;
+    opacity: 0.8;
     filter: blur(0.2px);
     }}
 
