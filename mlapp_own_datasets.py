@@ -76,7 +76,7 @@ if choose == 'Dataset':
     X = pd.DataFrame(datal.data)
     y = pd.DataFrame(datal.target)
     data = pd.concat([X, y], axis =1)
-    data.to_csv("sourcev.csv", index=None)
+    data.to_csv("sourcev.csv")
     st.dataframe(data)
         
 if choose == 'EDA':
