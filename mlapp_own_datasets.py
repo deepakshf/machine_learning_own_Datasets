@@ -1,4 +1,23 @@
 import streamlit as st
+
+page_bg_img = f"""
+<style>
+[data-testid = "stAppViewContainer"]{{
+    background-image: url("https://img.freepik.com/free-vector/abstract-background_53876-43364.jpg?w=1060&t=st=1685685448~exp=1685686048~hmac=bf06f2136962f77d8fb9a95948390114a68a61622da7713a357e1e359c89618c");
+    background-size: cover;
+    opacity: 0.9;
+    }}
+[data-testid = "stSidebar"]{{
+    background-image: url("https://img.freepik.com/free-vector/multicolor-abstract-background_1123-53.jpg?w=740&t=st=1685685659~exp=1685686259~hmac=d3e48585afea7ba2d11c59452ad8edb5c216e26638437d1de8bbe0dec0188f72");
+    background-size: cover;
+    opacity: 0.8;
+    filter: blur(0.2px);
+    }}
+
+</style>
+"""
+st.markdown(page_bg_img, unsafe_allow_html = True)
+
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -81,9 +100,9 @@ if choose == 'Training':
             st.table(compare_model)
 
             best_model2
-            s2.save_model(best_model2,"Machine learning Model")
+            s2.save_model(best_model2,"Machine_learning_Model")
 
-if choose == "Download":
-    with open("Machine Learning model.pkl",'rb') as f:
+if choose == 'Download':
+    with open("Machine_learning_Model.pkl",'rb') as f:
         st.caption("Download your model from here:")
-        st.download_button("Download the file",f,"Machine Learning model.pkl")
+        st.download_button("Download the file",f,"Machine_learning_Model.pkl")
