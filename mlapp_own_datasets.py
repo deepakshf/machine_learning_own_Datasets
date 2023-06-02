@@ -8,7 +8,7 @@ page_bg_img = f"""
     opacity: 0.9;
     }}
 [data-testid = "stSidebar"]{{
-    background-image: url("https://img.freepik.com/free-vector/multicolor-abstract-background_1123-53.jpg?w=740&t=st=1685685659~exp=1685686259~hmac=d3e48585afea7ba2d11c59452ad8edb5c216e26638437d1de8bbe0dec0188f72");
+    background-image: url("https://e0.pxfuel.com/wallpapers/618/388/desktop-wallpaper-white-technology-white-network.jpg");
     background-size: cover;
     opacity: 0.8;
     filter: blur(0.2px);
