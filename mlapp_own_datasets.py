@@ -72,7 +72,7 @@ if choose == 'Dataset':
         else:
             datan = datasets.load_digits()
         
-    data = pd.read_csv(datan,index_col=None)
+    data = pd.DataFrame(datan.data,index_col=None)
     data.to_csv("sourcev.csv", index=None)
     st.dataframe(data)
         
