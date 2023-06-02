@@ -88,7 +88,7 @@ if choose == 'Training':
             st.info("The comparison of models is as follows:")
             st.table(compare_model)
             
-best_model2
+            best_model2
             s2.save_model(best_model2,"Machine_learning_Model")
 
 if choose == 'Download':
