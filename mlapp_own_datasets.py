@@ -17,7 +17,7 @@ st.image(ml_logo, width=500)
 st.title('Auto ML Library')
 
 if os.path.exists("sourcev.csv"):
-    data = pd.read_csv('sourcev.csv',index_col=None)
+    df = pd.read_csv('sourcev.csv',index_col=None)
 
 with st.sidebar:
     st.title('Welcome to ML App')
