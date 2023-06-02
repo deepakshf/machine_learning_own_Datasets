@@ -71,7 +71,8 @@ if choose == 'Dataset':
             datan = datasets.load_diabetes()
         else:
             datan = datasets.load_digits()
-    mnt = datan.data
+        return datan.data
+    mnt = get_dataset(dataset_name)
     data = pd.DataFrame(mnt)
     data.to_csv("sourcev.csv", index=None)
     st.dataframe(data)
