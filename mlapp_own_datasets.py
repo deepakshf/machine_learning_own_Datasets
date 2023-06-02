@@ -57,7 +57,7 @@ with st.sidebar:
     
     
 if choose == 'Dataset':
-    dataset_name = st.sidebar.selectbox("Select Your Desired Dataset:",("Iris Dataset", "Breast Cancer Dataset", "Wine Dataset","Diabetes Dataset","Digits Dataset","Boston Housing Dataset"))
+    dataset_name = st.selectbox("Select Your Desired Dataset:",("Iris Dataset", "Breast Cancer Dataset", "Wine Dataset","Diabetes Dataset","Digits Dataset","Boston Housing Dataset"))
     def get_dataset(dataset_name):
         if dataset_name == "Iris Dataset":
             data = datasets.load_iris()
