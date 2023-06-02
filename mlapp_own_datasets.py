@@ -88,10 +88,13 @@ if choose == 'Training':
             st.info("The comparison of models is as follows:")
             st.table(compare_model)
             
-            best_model2
-            s2.save_model(best_model2,"Machine learning Model")
+best_model2
+            s2.save_model(best_model2,"Machine_learning_Model")
 
-if choose =="Download":
-    with open("Machine Learning model.pkl",'rb') as f:
+if choose == 'Download':
+    with open("Machine_learning_Model.pkl",'rb') as f:
         st.caption("Download your model from here:")
-        st.download_button("Download the file",f,"Machine Learning model.pkl")
+        st.download_button("Download the file",f,"Machine_learning_Model.pkl")
+        
+        
+        
