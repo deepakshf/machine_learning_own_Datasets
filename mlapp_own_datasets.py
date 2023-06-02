@@ -3,7 +3,7 @@ import streamlit as st
 page_bg_img = f"""
 <style>
 [data-testid = "stAppViewContainer"]{{
-    background-image: url("https://as1.ftcdn.net/v2/jpg/01/56/32/36/1000_F_156323698_IuUwv2hjH8vt1SsUwdOUZHPm7iQ1tq11.jpg");
+    background-image: url("https://wallpaperaccess.com/full/829012.jpg");
     background-size: cover;
     opacity: 0.9;
     }}
