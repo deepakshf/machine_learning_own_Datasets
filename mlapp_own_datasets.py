@@ -74,7 +74,7 @@ if choose == 'Dataset':
         return datan.data, datan.target
     x, y  = get_dataset(dataset_name)
     data1 = pd.DataFrame(x)
-    data2 = pd.DataFrame(x)
+    data2 = pd.DataFrame(y)
     data = pd.concat([ data1, data2 ], axis=1)
     data.to_csv("sourcev.csv", index=None)
     st.dataframe(data)
